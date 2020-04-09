@@ -40,6 +40,7 @@ public class MainWindow extends JFrame
 	JLabel dateLbl;
 	JLabel fundsLbl;
 	JLabel popLbl;
+	JLabel pollLbl;
 	JLabel currentToolLbl;
 	JLabel currentToolCostLbl;
 	Map<MicropolisTool,JToggleButton> toolBtns;
@@ -404,6 +405,12 @@ public class MainWindow extends JFrame
 		pane.add(new JLabel(strings.getString("main.population_label")), c0);
 		popLbl = new JLabel();
 		pane.add(popLbl, c1);
+		
+		c0.gridy = c1.gridy = 3;
+		
+		pane.add(new JLabel(strings.getString("main.pollution_label")), c0);
+		pollLbl = new JLabel();
+		pane.add(pollLbl, c1);
 
 		return pane;
 	}
@@ -1051,7 +1058,7 @@ public class MainWindow extends JFrame
 		c.gridy++;
 		Box b7 = new Box(BoxLayout.X_AXIS);
 		gridBox.add(b7,c);
-		b7.add(makeToolBtn(MicropolisTool.NEW_BUILDING));
+		b7.add(makeToolBtn(MicropolisTool.SOLAR));
 
 		// add glue to make all elements align toward top
 		c.gridy++;
@@ -1344,6 +1351,14 @@ public class MainWindow extends JFrame
 		NumberFormat nf = NumberFormat.getInstance();
 		popLbl.setText(nf.format(getEngine().getCityPopulation()));
 	}
+	
+	private void updatePollLabel()
+	{
+		pollLbl.setText(formatGameDate(engine.cityTime));
+
+		NumberFormat nf = NumberFormat.getInstance();
+		pollLbl.setText(nf.format(engine.pollutionAverage));
+	}
 
 	Timer simTimer;
 	Timer shakeTimer;
@@ -1387,6 +1402,7 @@ public class MainWindow extends JFrame
 				}
 			}
 			updateDateLabel();
+			updatePollLabel();
 			dirty2 = true;
 		}};
 		taskPerformer = wrapActionListener(taskPerformer);

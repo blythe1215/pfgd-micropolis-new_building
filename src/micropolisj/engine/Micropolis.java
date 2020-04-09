@@ -151,7 +151,7 @@ public class Micropolis
 	int needChurch;   // -1 too many already, 0 just right, 1 not enough
 
 	int crimeAverage;
-	int pollutionAverage;
+	public int pollutionAverage;
 	int landValueAverage;
 	int trafficAverage;
 
@@ -1461,7 +1461,7 @@ public class Micropolis
 		bb.put("INDUSTRIAL", new MapScanner(this, MapScanner.B.INDUSTRIAL));
 		bb.put("COAL", new MapScanner(this, MapScanner.B.COAL));
 		bb.put("NUCLEAR", new MapScanner(this, MapScanner.B.NUCLEAR));
-		bb.put("NEW_BUILDING", new MapScanner(this, MapScanner.B.NEW_BUILDING));
+		bb.put("SOLAR", new MapScanner(this, MapScanner.B.SOLAR));
 		bb.put("FIRESTATION", new MapScanner(this, MapScanner.B.FIRESTATION));
 		bb.put("POLICESTATION", new MapScanner(this, MapScanner.B.POLICESTATION));
 		bb.put("STADIUM_EMPTY", new MapScanner(this, MapScanner.B.STADIUM_EMPTY));
